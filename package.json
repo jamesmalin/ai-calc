@@ -1,0 +1,42 @@
+{
+  "name": "ai-calc",
+  "version": "1.0.4",
+  "description": "A comprehensive price calculator for token-based AI models. Automatically calculate and summarize the total cost of all AI API calls in your script, providing a detailed output after execution.",
+  "main": "dist/price-calculator.js",
+  "types": "dist/price-calculator.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Malin",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.0.0",
+    "typescript": "^4.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "openai": "^4.53.2"
+  },
+  "keywords": [
+    "AI",
+    "token price calculator",
+    "OpenAI",
+    "GPT",
+    "model cost calculator",
+    "AI token pricing",
+    "OpenAI token costs",
+    "GPT-3",
+    "GPT-4",
+    "GPT-3.5 Turbo",
+    "AI model cost",
+    "OpenAI API",
+    "token usage cost",
+    "AI pricing tool",
+    "AI cost estimation",
+    "AI API pricing",
+    "GPT token pricing",
+    "OpenAI pricing",
+    "Total usage cost"
+  ]
+}
