@@ -39,7 +39,35 @@ const TokenPrice: { [key: string]: number[] } = {
     // Embedding Models
     'text-embedding-3-small': [0.00002, 0.00002],
     'text-embedding-3-large': [0.00013, 0.00013],
-    'ada-v2': [0.0001, 0.0001]
+    'ada-v2': [0.0001, 0.0001],
+
+    // AWS Bedrock
+    'jurassic-2-mid': [0.0125, 0.0125],
+    'jurassic-2-ultra': [0.0188, 0.0188],
+    'jamba-instruct': [0.0005, 0.0007],
+    'claude-3.5-sonnet': [0.003, 0.015],
+    'claude-3-opus': [0.015, 0.075],
+    'claude-3-haiku': [0.00025, 0.00125],
+    'claude-3-sonnet': [0.003, 0.015],
+    'claude-2.1': [0.008, 0.024],
+    'claude-2.0': [0.008, 0.024],
+    'claude-instant': [0.0008, 0.0024],
+    'command': [0.0015, 0.0020],
+    'command-light': [0.0003, 0.0006],
+    'command-r+': [0.0030, 0.0150],
+    'command-r': [0.0005, 0.0015],
+    'embed-english': [0.0001, 0],
+    'embed-multilingual': [0.0001, 0],
+    'llama-2-chat-13b': [0.00075, 0.001],
+    'llama-2-chat-70b': [0.00195, 0.00256],
+    'amazon-titan-text-premier': [0.0005, 0.0015],
+    'amazon-titan-text-lite': [0.00015, 0.0002],
+    'amazon-titan-text-express': [0.0002, 0.0006],
+    'amazon-titan-text-embeddings': [0.0001, 0],
+    'amazon-titan-text-embeddings-v2': [0.00002, 0],
+    'llama-3.1-instruct-8b': [0.0003, 0.0006],
+    'llama-3.1-instruct-70b': [0.00265, 0.0035],
+    'llama-3.1-instruct-405b': [0.00532, 0.016]
 };
 
 class PriceCalculator {

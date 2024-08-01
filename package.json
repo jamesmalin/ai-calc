@@ -1,6 +1,6 @@
 {
   "name": "ai-calc",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A comprehensive price calculator for token-based AI models. Automatically calculate and summarize the total cost of all AI API calls in your script, providing a detailed output after execution.",
   "main": "dist/price-calculator.js",
   "types": "dist/price-calculator.d.ts",
@@ -39,6 +39,10 @@
     "openai pricing",
     "total usage cost",
     "gpt cost",
-    "gpt calculator"
+    "gpt calculator",
+    "amazon bedrock calculator",
+    "bedrock cost",
+    "aws ai calculator",
+    "aws model cost"
   ]
 }
