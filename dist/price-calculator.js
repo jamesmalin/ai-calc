@@ -32,37 +32,78 @@ const TokenPrice = {
     // Embedding Models
     'text-embedding-3-small': [0.00002, 0.00002],
     'text-embedding-3-large': [0.00013, 0.00013],
-    'ada-v2': [0.0001, 0.0001]
+    'ada-v2': [0.0001, 0.0001],
+    // AWS Bedrock
+    'jamba-instruct': [0.0005, 0.0007],
+    'jurassic-2-mid': [0.0125, 0.0125],
+    'jurassic-2-ultra': [0.0188, 0.0188],
+    'titan-text-express': [0.0002, 0.0006],
+    'titan-text-lite': [0.00015, 0.0002],
+    'titan-text-premier': [0.0005, 0.0015],
+    'titan-embed-text': [0.0001, 0],
+    'titan-embed-text-v2': [0.00002, 0],
+    'claude-v2': [0.008, 0.024],
+    'claude-3-sonnet': [0.003, 0.015],
+    'claude-3-5-sonnet': [0.003, 0.015],
+    'claude-3-haiku': [0.00025, 0.00125],
+    'claude-3-opus': [0.015, 0.075],
+    'claude-instant': [0.0008, 0.0024],
+    'command': [0.0015, 0.0020],
+    'command-light': [0.0003, 0.0006],
+    'command-r': [0.0005, 0.0015],
+    'command-r-plus': [0.0030, 0.0150],
+    'embed-english': [0.0001, 0],
+    'embed-multilingual': [0.0001, 0],
+    'llama2-chat-13b': [0.00075, 0.001],
+    'llama2-chat-70b': [0.00195, 0.00256],
+    'llama3-8b-instruct': [0.0003, 0.0006],
+    'llama3-70b-instruct': [0.00265, 0.0035],
+    'llama3-1-8b-instruct': [0.0003, 0.0006],
+    'llama3-1-70b-instruct': [0.00265, 0.0035],
+    'llama3-1-405b-instruct': [0.00532, 0.016],
+    'mistral-7b-instruct': [0.0003, 0.0006],
+    'mixtral-8x7b-instruct': [0.00265, 0.0035],
+    'mistral-large-2402': [0.00075, 0.001],
+    'mistral-large-2407': [0.00195, 0.00256],
+    'mistral-small-2402': [0.0002, 0.0006],
+    'stable-diffusion-xl-v0': [0.00015, 0.0002],
+    'stable-diffusion-xl-v1': [0.0002, 0.0006]
 };
 class PriceCalculator {
-    constructor(modelFormat = (model) => model) {
+    constructor(modelFormat = (model) => model.split('.').slice(1, 2)[0].split('-v')[0]) {
         this.totalInputPrice = 0;
         this.totalOutputPrice = 0;
         this.totalCombinedPrice = 0;
         this.modelFormat = modelFormat;
     }
-    getInputPrice(model, tokens = 1000) {
-        const formattedModel = this.modelFormat(model);
-        return this.calcPrice(TokenPrice[formattedModel][0], tokens);
+    getInputPrice(modelId, tokens = 1000) {
+        const baseName = this.modelFormat(modelId);
+        if (!(baseName in TokenPrice)) {
+            throw new Error(`Model ${baseName} not found`);
+        }
+        return this.calcPrice(TokenPrice[baseName][0], tokens);
     }
-    getOutputPrice(model, tokens = 1000) {
-        const formattedModel = this.modelFormat(model);
-        return this.calcPrice(TokenPrice[formattedModel][1], tokens);
+    getOutputPrice(modelId, tokens = 1000) {
+        const baseName = this.modelFormat(modelId);
+        if (!(baseName in TokenPrice)) {
+            throw new Error(`Model ${baseName} not found`);
+        }
+        return this.calcPrice(TokenPrice[baseName][1], tokens);
     }
-    getTotalPrice(model, inputTokens, outputTokens) {
-        const inputPrice = this.getInputPrice(model, inputTokens);
-        const outputPrice = this.getOutputPrice(model, outputTokens);
+    getTotalPrice(modelId, inputTokens, outputTokens) {
+        const inputPrice = this.getInputPrice(modelId, inputTokens);
+        const outputPrice = this.getOutputPrice(modelId, outputTokens);
         return inputPrice + outputPrice;
     }
     calcPrice(price, tokens) {
         return (price * tokens) / 1000;
     }
-    calculateTokenPrice(model, usage) {
+    calculateTokenPrice(modelId, usage) {
         const inputTokens = usage.prompt_tokens;
         const outputTokens = usage.completion_tokens;
-        const inputPrice = this.getInputPrice(model, inputTokens);
-        const outputPrice = this.getOutputPrice(model, outputTokens);
-        const totalPrice = this.getTotalPrice(model, inputTokens, outputTokens);
+        const inputPrice = this.getInputPrice(modelId, inputTokens);
+        const outputPrice = this.getOutputPrice(modelId, outputTokens);
+        const totalPrice = this.getTotalPrice(modelId, inputTokens, outputTokens);
         this.totalInputPrice += inputPrice;
         this.totalOutputPrice += outputPrice;
         this.totalCombinedPrice += totalPrice;

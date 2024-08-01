@@ -4,11 +4,11 @@ declare class PriceCalculator {
     private totalCombinedPrice;
     private modelFormat;
     constructor(modelFormat?: (model: string) => string);
-    getInputPrice(model: string, tokens?: number): number;
-    getOutputPrice(model: string, tokens?: number): number;
-    getTotalPrice(model: string, inputTokens: number, outputTokens: number): number;
+    getInputPrice(modelId: string, tokens?: number): number;
+    getOutputPrice(modelId: string, tokens?: number): number;
+    getTotalPrice(modelId: string, inputTokens: number, outputTokens: number): number;
     private calcPrice;
-    calculateTokenPrice(model: string, usage: {
+    calculateTokenPrice(modelId: string, usage: {
         prompt_tokens: number;
         completion_tokens: number;
     }): void;
