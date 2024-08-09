@@ -1,6 +1,6 @@
 {
   "name": "ai-calc",
-  "version": "1.1.1",
+  "version": "1.1.5",
   "description": "A comprehensive price calculator for token-based AI models. Automatically calculate and summarize the total cost of all AI API calls in your script, providing a detailed output after execution.",
   "main": "dist/price-calculator.js",
   "types": "dist/price-calculator.d.ts",

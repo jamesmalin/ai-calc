@@ -70,7 +70,9 @@ const TokenPrice = {
     'stable-diffusion-xl-v1': [0.0002, 0.0006]
 };
 class PriceCalculator {
-    constructor(modelFormat = (model) => model.split('.').slice(1, 2)[0].split('-v')[0]) {
+    constructor(modelFormat = (model) => {
+        return model.split('-v')[0];
+    }) {
         this.totalInputPrice = 0;
         this.totalOutputPrice = 0;
         this.totalCombinedPrice = 0;

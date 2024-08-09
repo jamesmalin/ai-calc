@@ -84,7 +84,9 @@ class PriceCalculator {
     private totalCombinedPrice: number = 0;
     private modelFormat: (model: string) => string;
 
-    constructor(modelFormat: (model: string) => string = (model) => model.split('.').slice(1, 2)[0].split('-v')[0]) {
+    constructor(modelFormat: (model: string) => string = (model) => {
+        return model.split('-v')[0];
+    }) {
         this.modelFormat = modelFormat;
     }
 
