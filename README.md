@@ -1,6 +1,6 @@
-# ai-calc
+# AI-CALC: Token Price Calculator for GPT and OpenAI Models
 
-A comprehensive price calculator for token-based AI models. Automatically calculate and summarize the total cost of all AI API calls in your script, providing a detailed output after execution.
+Easily calculate and summarize the total cost of AI API calls for models like GPT-3, GPT-4, and Amazon Bedrock with AI-CALC. This tool provides detailed cost estimates for OpenAI and AWS AI models, helping you manage token usage costs effectively.
 
 ## Installation
 
@@ -107,3 +107,30 @@ console.log('Total Combined Price:', priceCalculator.getTotalCombinedPrice());
 MIT License
 
 Author: James Malin
+
+## Keywords
+- ai
+- token price calculator
+- openai
+- gpt
+- model cost calculator
+- ai token pricing
+- openai token costs
+- gpt-3
+- gpt-4
+- gpt-3.5 turbo
+- ai model cost
+- openai api
+- token usage cost
+- ai pricing tool
+- ai cost estimation
+- ai api pricing
+- gpt token pricing
+- openai pricing
+- total usage cost
+- gpt cost
+- gpt calculator
+- amazon bedrock calculator
+- bedrock cost
+- aws ai calculator
+- aws model cost
