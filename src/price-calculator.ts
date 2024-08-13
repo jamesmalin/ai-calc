@@ -116,7 +116,7 @@ class PriceCalculator {
         return (price * tokens) / 1000;
     }
 
-    public calculateTokenPrice(modelId: string, usage: { prompt_tokens: number, completion_tokens: number }): void {
+    public calculateTokenPrice(modelId: string, usage: { prompt_tokens: number, completion_tokens: number }): { inputPrice: number, outputPrice: number, totalPrice: number } {
         const inputTokens = usage.prompt_tokens;
         const outputTokens = usage.completion_tokens;
 
@@ -127,6 +127,7 @@ class PriceCalculator {
         this.totalInputPrice += inputPrice;
         this.totalOutputPrice += outputPrice;
         this.totalCombinedPrice += totalPrice;
+        return { inputPrice, outputPrice, totalPrice };
     }
 
     public getTotalInputPrice(): number {

@@ -11,7 +11,11 @@ declare class PriceCalculator {
     calculateTokenPrice(modelId: string, usage: {
         prompt_tokens: number;
         completion_tokens: number;
-    }): void;
+    }): {
+        inputPrice: number;
+        outputPrice: number;
+        totalPrice: number;
+    };
     getTotalInputPrice(): number;
     getTotalOutputPrice(): number;
     getTotalCombinedPrice(): number;

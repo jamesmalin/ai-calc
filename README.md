@@ -24,32 +24,36 @@ Calculate total for multiple calls:
 ```typescript
 import PriceCalculator from 'ai-calc';
 
+import OpenAI from "openai"; // your model package
+const openai = new OpenAI(); // your constructor/config
+
 // Example usage
 const priceCalculator = new PriceCalculator();
 
 // Add custom model or update/override existing
 // priceCalculator.addOrUpdateModel('custom-model', 0.02, 0.04);
 
-let completion;
 const model1 = "gpt-4-1106-preview";
-const model2 = "gpt-4-turbo";
-completion = await openai.chat.completions.create({
+const completion1 = await openai.chat.completions.create({
     messages: [
         { "role": "user", "content": "Say hello!" }
     ],
     model: model1,
 });
 
-priceCalculator.calculateTokenPrice(model1, completion.usage);
+const model1Price = priceCalculator.calculateTokenPrice(model1, completion1.usage);
+console.log(model1Price);
 
-completion = await openai.chat.completions.create({
+const model2 = "gpt-4-turbo";
+const completion2 = await openai.chat.completions.create({
     messages: [
         { "role": "user", "content": "Say good-bye!" }
     ],
     model: model2,
 });
 
-priceCalculator.calculateTokenPrice(model2, completion.usage);
+const model2Price = priceCalculator.calculateTokenPrice(model2, completion2.usage);
+console.log(model2Price);
 
 console.log('Total Input Price:', priceCalculator.getTotalInputPrice());
 console.log('Total Output Price:', priceCalculator.getTotalOutputPrice());
@@ -61,6 +65,9 @@ console.log('Total Combined Price:', priceCalculator.getTotalCombinedPrice());
 ```javascript
 const PriceCalculator = require('ai-calc');
 
+const OpenAI = require("openai"); // your model package
+const openai = new OpenAI(); // your constructor/config
+
 // Example usage
 const priceCalculator = new PriceCalculator();
 
@@ -69,24 +76,26 @@ const priceCalculator = new PriceCalculator();
 
 let completion;
 const model1 = "gpt-4-1106-preview";
-const model2 = "gpt-4-turbo";
-completion = await openai.chat.completions.create({
+const completion1 = await openai.chat.completions.create({
     messages: [
         { "role": "user", "content": "Say hello!" }
     ],
     model: model1,
 });
 
-priceCalculator.calculateTokenPrice(model1, completion.usage);
+const model1Price = priceCalculator.calculateTokenPrice(model1, completion1.usage);
+console.log(model1Price);
 
-completion = await openai.chat.completions.create({
+const model2 = "gpt-4-turbo";
+const completion2 = await openai.chat.completions.create({
     messages: [
         { "role": "user", "content": "Say good-bye!" }
     ],
     model: model2,
 });
 
-priceCalculator.calculateTokenPrice(model2, completion.usage);
+const model2Price = priceCalculator.calculateTokenPrice(model2, completion2.usage);
+console.log(model2Price);
 
 console.log('Total Input Price:', priceCalculator.getTotalInputPrice());
 console.log('Total Output Price:', priceCalculator.getTotalOutputPrice());

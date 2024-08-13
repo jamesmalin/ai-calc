@@ -109,6 +109,7 @@ class PriceCalculator {
         this.totalInputPrice += inputPrice;
         this.totalOutputPrice += outputPrice;
         this.totalCombinedPrice += totalPrice;
+        return { inputPrice, outputPrice, totalPrice };
     }
     getTotalInputPrice() {
         return this.totalInputPrice;
